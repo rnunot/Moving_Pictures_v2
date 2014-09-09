@@ -1,6 +1,5 @@
 /node_modules
 /bootstrap/compiled.php
-/vendor
 composer.phar
 composer.lock
 .env.*.php
