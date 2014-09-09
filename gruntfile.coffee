@@ -12,17 +12,23 @@ module.exports = (grunt) ->
         dest: "public/js/x.min.js"
 
     cssmin:
-      add_banner:
+      minify:
         options:
           banner: "/*! <%= pkg.name %> <%= pkg.version %> version: <%= grunt.template.today(\"yyyy-mm-dd\") %> */\n"
           keepSpecialComments: 0
 
         files:
           "public/css/x.min.css" : ["public/css/*.css"]
+    
     coffee:
       compile:
-        files:
-          "public/js/x.js" : ["public/coffee/*.coffee"]
+        files: [
+          expand: true
+          cwd: 'public/js/coffee'
+          src: '*.coffee' 
+          dest: 'public/js/'
+          ext: '.js'
+        ]
     
     stylus:
       compile:
@@ -33,13 +39,28 @@ module.exports = (grunt) ->
           firebug: false #Specifies if the generated CSS file should contain debug info that can be used by the FireStylus Firebug plugin
           import: ['nib/*'] #Import all nib packages
            
-        files:
-          'public/css/result.css': ['public/css/stylus/test.styl']
-  
+        files: [
+          expand: true
+          cwd: 'public/css/stylus'
+          src: '*.styl' 
+          dest: 'public/css/'
+          ext: '.css'
+        ]
+    
+    watch:
+      stylesheets: 
+        files: 'public/css/stylus/*.styl'
+        tasks: ['stylesheets']
+      
+      coffeescript:
+        files: 'public/js/coffee/*.coffee'
+        tasks: ['coffee']
+
   # Load newer plugin https://github.com/tschaub/grunt-newer
   grunt.loadNpmTasks 'grunt-newer' 
 
   # Load watcher plugin https://www.npmjs.org/package/grunt-contrib-watch
+  grunt.loadNpmTasks 'grunt-contrib-watch'
 
   # Load the plugin that provides the "uglify" task https://www.npmjs.org/package/grunt-contrib-uglify
   grunt.loadNpmTasks "grunt-contrib-uglify"
@@ -60,3 +81,5 @@ module.exports = (grunt) ->
   grunt.registerTask "minify", ["newer:uglify", "newer:cssmin"]
   
   grunt.registerTask "default", ["stylus"]
+
+  grunt.registerTask "stylesheets", ["stylus:compile"]
