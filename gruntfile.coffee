@@ -1,5 +1,5 @@
 module.exports = (grunt) ->
-  
+
   # Project configuration.
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json")
@@ -19,17 +19,17 @@ module.exports = (grunt) ->
 
         files:
           "public/css/x.min.css" : ["public/css/*.css"]
-    
+
     coffee:
       compile:
         files: [
           expand: true
           cwd: 'public/js/coffee'
-          src: '*.coffee' 
+          src: '*.coffee'
           dest: 'public/js/'
           ext: '.js'
         ]
-    
+
     stylus:
       compile:
         options:
@@ -38,33 +38,45 @@ module.exports = (grunt) ->
           linenos: false #Specifies if the generated CSS file should contain comments indicating the corresponding stylus line.
           firebug: false #Specifies if the generated CSS file should contain debug info that can be used by the FireStylus Firebug plugin
           import: ['nib/*'] #Import all nib packages
-           
+
         files: [
           expand: true
           cwd: 'public/css/stylus'
-          src: '*.styl' 
+          src: '*.styl'
           dest: 'public/css/'
           ext: '.css'
         ]
-    
+
+    jade:
+      compile:
+        options:
+          pretty: true #Output indented HTML. #(may be turned off for production)
+        files: [
+          expand: true
+          cwd: 'app/views'
+          src: '**/*.jade'
+          dest: '**/'
+          ext: '.html'
+        ]
+
     watch:
-      stylesheets: 
+      stylesheets:
         files: 'public/css/stylus/*.styl'
         tasks: ['stylesheets']
-      
+
       coffeescript:
         files: 'public/js/coffee/*.coffee'
         tasks: ['coffee']
 
   # Load newer plugin https://github.com/tschaub/grunt-newer
-  grunt.loadNpmTasks 'grunt-newer' 
+  grunt.loadNpmTasks 'grunt-newer'
 
   # Load watcher plugin https://www.npmjs.org/package/grunt-contrib-watch
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
   # Load the plugin that provides the "uglify" task https://www.npmjs.org/package/grunt-contrib-uglify
   grunt.loadNpmTasks "grunt-contrib-uglify"
-  
+
   # Load css minifier https://www.npmjs.org/package/grunt-contrib-cssmin
   grunt.loadNpmTasks "grunt-contrib-cssmin"
 
@@ -77,9 +89,12 @@ module.exports = (grunt) ->
   # Load coffee script compiler https://www.npmjs.org/package/grunt-contrib-coffee
   grunt.loadNpmTasks "grunt-contrib-coffee"
 
+  # Load jade compiler https://www.npmjs.org/package/grunt-contrib-jade
+  grunt.loadNpmTasks "grunt-contrib-jade"
+
   # Tasks
   grunt.registerTask "minify", ["newer:uglify", "newer:cssmin"]
-  
+
   grunt.registerTask "default", ["stylus"]
 
   grunt.registerTask "stylesheets", ["stylus:compile"]

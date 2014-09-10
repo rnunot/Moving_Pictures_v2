@@ -5,11 +5,11 @@
     	<title>home</title>
     	<meta name="viewport" content="width=device-width, initial-scale=1">
         <link media="all" type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-        <link media="all" type="text/css" rel="stylesheet" href="css/main.css">
+        <link media="all" type="text/css" rel="stylesheet" href="css/test.css">
     </head>
     <body class="">
         <div class="navbar navbar-main navbar-dark navbar-static-top" role="navigation">
-            <div class="navbar-inner"> 
+            <div class="navbar-inner">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
@@ -75,7 +75,7 @@
         <div class='container main-container dark'>
             @yield('content')
         </div>
-        
+
         <div class="footer-main footer-dark">
             <div class="container">
                 <div class="row">
@@ -84,7 +84,7 @@
                 </div>
             </div>
         </div>
-        
+
 
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

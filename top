@@ -1,0 +1,444 @@
+[1mdiff --git a/gruntfile.coffee b/gruntfile.coffee[m
+[1mindex 25b6ee1..6a2e64a 100644[m
+[1m--- a/gruntfile.coffee[m
+[1m+++ b/gruntfile.coffee[m
+[36m@@ -12,17 +12,23 @@[m [mmodule.exports = (grunt) ->[m
+         dest: "public/js/x.min.js"[m
+ [m
+     cssmin:[m
+[31m-      add_banner:[m
+[32m+[m[32m      minify:[m
+         options:[m
+           banner: "/*! <%= pkg.name %> <%= pkg.version %> version: <%= grunt.template.today(\"yyyy-mm-dd\") %> */\n"[m
+           keepSpecialComments: 0[m
+ [m
+         files:[m
+           "public/css/x.min.css" : ["public/css/*.css"][m
+[32m+[m[41m    [m
+     coffee:[m
+       compile:[m
+[31m-        files:[m
+[31m-          "public/js/x.js" : ["public/coffee/*.coffee"][m
+[32m+[m[32m        files: [[m
+[32m+[m[32m          expand: true[m
+[32m+[m[32m          cwd: 'public/js/coffee'[m
+[32m+[m[32m          src: '*.coffee'[m[41m [m
+[32m+[m[32m          dest: 'public/js/'[m
+[32m+[m[32m          ext: '.js'[m
+[32m+[m[32m        ][m
+     [m
+     stylus:[m
+       compile:[m
+[36m@@ -33,13 +39,28 @@[m [mmodule.exports = (grunt) ->[m
+           firebug: false #Specifies if the generated CSS file should contain debug info that can be used by the FireStylus Firebug plugin[m
+           import: ['nib/*'] #Import all nib packages[m
+            [m
+[31m-        files:[m
+[31m-          'public/css/result.css': ['public/css/stylus/test.styl'][m
+[31m-  [m
+[32m+[m[32m        files: [[m
+[32m+[m[32m          expand: true[m
+[32m+[m[32m          cwd: 'public/css/stylus'[m
+[32m+[m[32m          src: '*.styl'[m[41m [m
+[32m+[m[32m          dest: 'public/css/'[m
+[32m+[m[32m          ext: '.css'[m
+[32m+[m[32m        ][m
+[32m+[m[41m    [m
+[32m+[m[32m    watch:[m
+[32m+[m[32m      stylesheets:[m[41m [m
+[32m+[m[32m        files: 'public/css/stylus/*.styl'[m
+[32m+[m[32m        tasks: ['stylesheets'][m
+[32m+[m[41m      [m
+[32m+[m[32m      coffeescript:[m
+[32m+[m[32m        files: 'public/js/coffee/*.coffee'[m
+[32m+[m[32m        tasks: ['coffee'][m
+[32m+[m
+   # Load newer plugin https://github.com/tschaub/grunt-newer[m
+   grunt.loadNpmTasks 'grunt-newer' [m
+ [m
+   # Load watcher plugin https://www.npmjs.org/package/grunt-contrib-watch[m
+[32m+[m[32m  grunt.loadNpmTasks 'grunt-contrib-watch'[m
+ [m
+   # Load the plugin that provides the "uglify" task https://www.npmjs.org/package/grunt-contrib-uglify[m
+   grunt.loadNpmTasks "grunt-contrib-uglify"[m
+[36m@@ -60,3 +81,5 @@[m [mmodule.exports = (grunt) ->[m
+   grunt.registerTask "minify", ["newer:uglify", "newer:cssmin"][m
+   [m
+   grunt.registerTask "default", ["stylus"][m
+[32m+[m
+[32m+[m[32m  grunt.registerTask "stylesheets", ["stylus:compile"][m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex 19a10e7..34ca23c 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -10,6 +10,7 @@[m
+     "grunt-contrib-imagemin": "^0.8.1",[m
+     "grunt-contrib-stylus": "^0.19.0",[m
+     "grunt-contrib-uglify": "^0.5.1",[m
+[32m+[m[32m    "grunt-contrib-watch": "^0.6.1",[m
+     "grunt-newer": "^0.7.0"[m
+   }[m
+ }[m
+[1mdiff --git a/public/css/stylus/test.styl b/public/css/stylus/test.styl[m
+[1mindex 9938c7c..6a3646b 100644[m
+[1m--- a/public/css/stylus/test.styl[m
+[1m+++ b/public/css/stylus/test.styl[m
+[36m@@ -1,3 +1,4 @@[m
+ .class[m
+ 	border 0 solid #000[m
+[31m-	color #000[m
+\ No newline at end of file[m
+[32m+[m	[32mcolor #000[m
+[32m+[m	[32mborder none 1px[m
+\ No newline at end of file[m
+[1mdiff --git a/public/js/x.js b/public/js/x.js[m
+[1mdeleted file mode 100644[m
+[1mindex 53da1c7..0000000[m
+[1m--- a/public/js/x.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,2114 +0,0 @@[m
+[31m-/*![m
+[31m- * Bootstrap v3.2.0 (http://getbootstrap.com)[m
+[31m- * Copyright 2011-2014 Twitter, Inc.[m
+[31m- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)[m
+[31m- */[m
+[31m-[m
+[31m-if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript requires jQuery') }[m
+[31m-[m
+[31m-/* ========================================================================[m
+[31m- * Bootstrap: transition.js v3.2.0[m
+[31m- * http://getbootstrap.com/javascript/#transitions[m
+[31m- * ========================================================================[m
+[31m- * Copyright 2011-2014 Twitter, Inc.[m
+[31m- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)[m
+[31m- * ======================================================================== */[m
+[31m-[m
+[31m-[m
+[31m-+function ($) {[m
+[31m-  'use strict';[m
+[31m-[m
+[31m-  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)[m
+[31m-  // ============================================================[m
+[31m-[m
+[31m-  function transitionEnd() {[m
+[31m-    var el = document.createElement('bootstrap')[m
+[31m-[m
+[31m-    var transEndEventNames = {[m
+[31m-      WebkitTransition : 'webkitTransitionEnd',[m
+[31m-      MozTransition    : 'transitionend',[m
+[31m-      OTransition      : 'oTransitionEnd otransitionend',[m
+[31m-      transition       : 'transitionend'[m
+[31m-    }[m
+[31m-[m
+[31m-    for (var name in transEndEventNames) {[m
+[31m-      if (el.style[name] !== undefined) {[m
+[31m-        return { end: transEndEventNames[name] }[m
+[31m-      }[m
+[31m-    }[m
+[31m-[m
+[31m-    return false // explicit for ie8 (  ._.)[m
+[31m-  }[m
+[31m-[m
+[31m-  // http://blog.alexmaccaw.com/css-transitions[m
+[31m-  $.fn.emulateTransitionEnd = function (duration) {[m
+[31m-    var called = false[m
+[31m-    var $el = this[m
+[31m-    $(this).one('bsTransitionEnd', function () { called = true })[m
+[31m-    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }[m
+[31m-    setTimeout(callback, duration)[m
+[31m-    return this[m
+[31m-  }[m
+[31m-[m
+[31m-  $(function () {[m
+[31m-    $.support.transition = transitionEnd()[m
+[31m-[m
+[31m-    if (!$.support.transition) return[m
+[31m-[m
+[31m-    $.event.special.bsTransitionEnd = {[m
+[31m-      bindType: $.support.transition.end,[m
+[31m-      delegateType: $.support.transition.end,[m
+[31m-      handle: function (e) {[m
+[31m-        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)[m
+[31m-      }[m
+[31m-    }[m
+[31m-  })[m
+[31m-[m
+[31m-}(jQuery);[m
+[31m-[m
+[31m-/* ========================================================================[m
+[31m- * Bootstrap: alert.js v3.2.0[m
+[31m- * http://getbootstrap.com/javascript/#alerts[m
+[31m- * ========================================================================[m
+[31m- * Copyright 2011-2014 Twitter, Inc.[m
+[31m- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)[m
+[31m- * ======================================================================== */[m
+[31m-[m
+[31m-[m
+[31m-+function ($) {[m
+[31m-  'use strict';[m
+[31m-[m
+[31m-  // ALERT CLASS DEFINITION[m
+[31m-  // ======================[m
+[31m-[m
+[31m-  var dismiss = '[data-dismiss="alert"]'[m
+[31m-  var Alert   = function (el) {[m
+[31m-    $(el).on('click', dismiss, this.close)[m
+[31m-  }[m
+[31m-[m
+[31m-  Alert.VERSION = '3.2.0'[m
+[31m-[m
+[31m-  Alert.prototype.close = function (e) {[m
+[31m-    var $this    = $(this)[m
+[31m-    var selector = $this.attr('data-target')[m
+[31m-[m
+[31m-    if (!selector) {[m
+[31m-      selector = $this.attr('href')[m
+[31m-      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7[m
+[31m-    }[m
+[31m-[m
+[31m-    var $parent = $(selector)[m
+[31m-[m
+[31m-    if (e) e.preventDefault()[m
+[31m-[m
+[31m-    if (!$parent.length) {[m
+[31m-      $parent = $this.hasClass('alert') ? $this : $this.parent()[m
+[31m-    }[m
+[31m-[m
+[31m-    $parent.trigger(e = $.Event('close.bs.alert'))[m
+[31m-[m
+[31m-    if (e.isDefaultPrevented()) return[m
+[31m-[m
+[31m-    $parent.removeClass('in')[m
+[31m-[m
+[31m-    function removeElement() {[m
+[31m-      // detach from parent, fire event then clean up data[m
+[31m-      $parent.detach().trigger('closed.bs.alert').remove()[m
+[31m-    }[m
+[31m-[m
+[31m-    $.support.transition && $parent.hasClass('fade') ?[m
+[31m-      $parent[m
+[31m-        .one('bsTransitionEnd', removeElement)[m
+[31m-        .emulateTransitionEnd(150) :[m
+[31m-      removeElement()[m
+[31m-  }[m
+[31m-[m
+[31m-[m
+[31m-  // ALERT PLUGIN DEFINITION[m
+[31m-  // =======================[m
+[31m-[m
+[31m-  function Plugin(option) {[m
+[31m-    return this.each(function () {[m
+[31m-      var $this = $(this)[m
+[31m-      var data  = $this.data('bs.alert')[m
+[31m-[m
+[31m-      if (!data) $this.data('bs.alert', (data = new Alert(this)))[m
+[31m-      if (typeof option == 'string') data[option].call($this)[m
+[31m-    })[m
+[31m-  }[m
+[31m-[m
+[31m-  var old = $.fn.alert[m
+[31m-[m
+[31m-  $.fn.alert             = Plugin[m
+[31m-  $.fn.alert.Constructor = Alert[m
+[31m-[m
+[31m-[m
+[31m-  // ALERT NO CONFLICT[m
+[31m-  // =================[m
+[31m-[m
+[31m-  $.fn.alert.noConflict = function () {[m
+[31m-    $.fn.alert = old[m
+[31m-    return this[m
+[31m-  }[m
+[31m-[m
+[31m-[m
+[31m-  // ALERT DATA-API[m
+[31m-  // ==============[m
+[31m-[m
+[31m-  $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)[m
+[31m-[m
+[31m-}(jQuery);[m
+[31m-[m
+[31m-/* ========================================================================[m
+[31m- * Bootstrap: button.js v3.2.0[m
+[31m- * http://getbootstrap.com/javascript/#buttons[m
+[31m- * ========================================================================[m
+[31m- * Copyright 2011-2014 Twitter, Inc.[m
+[31m- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)[m
+[31m- * ======================================================================== */[m
+[31m-[m
+[31m-[m
+[31m-+function ($) {[m
+[31m-  'use strict';[m
+[31m-[m
+[31m-  // BUTTON PUBLIC CLASS DEFINITION[m
+[31m-  // ==============================[m
+[31m-[m
+[31m-  var Button = function (element, options) {[m
+[31m-    this.$element  = $(element)[m
+[31m-    this.options   = $.extend({}, Button.DEFAULTS, options)[m
+[31m-    this.isLoading = false[m
+[31m-  }[m
+[31m-[m
+[31m-  Button.VERSION  = '3.2.0'[m
+[31m-[m
+[31m-  Button.DEFAULTS = {[m
+[31m-    loadingText: 'loading...'[m
+[31m-  }[m
+[31m-[m
+[31m-  Button.prototype.setState = function (state) {[m
+[31m-    var d    = 'disabled'[m
+[31m-    var $el  = this.$element[m
+[31m-    var val  = $el.is('input') ? 'val' : 'html'[m
+[31m-    var data = $el.data()[m
+[31m-[m
+[31m-    state = state + 'Text'[m
+[31m-[m
+[31m-    if (data.resetText == null) $el.data('resetText', $el[val]())[m
+[31m-[m
+[31m-    $el[val](data[state] == null ? this.options[state] : data[state])[m
+[31m-[m
+[31m-    // push to event loop to allow forms to submit[m
+[31m-    setTimeout($.proxy(function () {[m
+[31m-      if (state == 'loadingText') {[m
+[31m-        this.isLoading = true[m
+[31m-        $el.addClass(d).attr(d, d)[m
+[31m-      } else if (this.isLoading) {[m
+[31m-        this.isLoading = false[m
+[31m-        $el.removeClass(d).removeAttr(d)[m
+[31m-      }[m
+[31m-    }, this), 0)[m
+[31m-  }[m
+[31m-[m
+[31m-  Button.prototype.toggle = function () {[m
+[31m-    var changed = true[m
+[31m-    var $parent = this.$element.closest('[data-toggle="buttons"]')[m
+[31m-[m
+[31m-    if ($parent.length) {[m
+[31m-      var $input = this.$element.find('input')[m
+[31m-      if ($input.prop('type') == 'radio') {[m
+[31m-        if ($input.prop('checked') && this.$element.hasClass('active')) changed = false[m
+[31m-        else $parent.find('.active').removeClass('active')[m
+[31m-      }[m
+[31m-      if (changed) $input.prop('checked', !this.$element.hasClass('active')).trigger('change')[m
+[31m-    }[m
+[31m-[m
+[31m-    if (changed) this.$element.toggleClass('active')[m
+[31m-  }[m
+[31m-[m
+[31m-[m
+[31m-  // BUTTON PLUGIN DEFINITION[m
+[31m-  // ========================[m
+[31m-[m
+[31m-  function Plugin(option) {[m
+[31m-    return this.each(function () {[m
+[31m-      var $this   = $(this)[m
+[31m-      var data    = $this.data('bs.button')[m
+[31m-      var options = typeof option == 'object' && option[m
+[31m-[m
+[31m-      if (!data) $this.data('bs.button', (data = new Button(this, options)))[m
+[31m-[m
+[31m-      if (option == 'toggle') data.toggle()[m
+[31m-      else if (option) data.setState(option)[m
+[31m-    })[m
+[31m-  }[m
+[31m-[m
+[31m-  var old = $.fn.button[m
+[31m-[m
+[31m-  $.fn.button             = Plugin[m
+[31m-  $.fn.button.Constructor = Button[m
+[31m-[m
+[31m-[m
+[31m-  // BUTTON NO CONFLICT[m
+[31m-  // ==================[m
+[31m-[m
+[31m-  $.fn.button.noConflict = function () {[m
+[31m-    $.fn.button = old[m
+[31m-    return this[m
+[31m-  }[m
+[31m-[m
+[31m-[m
+[31m-  // BUTTON DATA-API[m
+[31m-  // ===============[m
+[31m-[m
+[31m-  $(document).on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {[m
+[31m-    var $btn = $(e.target)[m
+[31m-    if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')[m
+[31m-    Plugin.call($btn, 'toggle')[m
+[31m-    e.preventDefault()[m
+[31m-  })[m
+[31m-[m
+[31m-}(jQuery);[m
+[31m-[m
+[31m-/* ========================================================================[m
+[31m- * Bootstrap: carousel.js v3.2.0[m
+[31m- * http://getbootstrap.com/javascript/#carousel[m
+[31m- * ========================================================================[m
+[31m- * Copyright 2011-2014 Twitter, Inc.[m
+[31m- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)[m
+[31m- * ======================================================================== */[m
+[31m-[m
+[31m-[m
+[31m-+function ($) {[m
+[31m-  'use strict';[m
+[31m-[m
+[31m-  // CAROUSEL CLASS DEFINITION[m
+[31m-  // =========================[m
+[31m-[m
+[31m-  var Carousel = function (element, options) {[m
+[31m-    this.$element    = $(element).on('keydown.bs.carousel', $.proxy(this.keydown, this))[m
+[31m-    this.$indicators = this.$element.find('.carousel-indicators')[m
+[31m-    this.options     = options[m
+[31m-    this.paused      =[m
+[31m-    this.sliding     =[m
+[31m-    this.interval    =[m
+[31m-    this.$active     =[m
+[31m-    this.$items      = null[m
+[31m-[m
+[31m-    this.options.pause == 'hover' && this.$element[m
+[31m-      .on('mouseenter.bs.carousel', $.proxy(this.pause, this))[m
+[31m-      .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))[m
+[31m-  }[m
+[31m-[m
+[31m-  Carousel.VERSION  = '3.2.0'[m
+[31m-[m
+[31m-  Carousel.DEFAULTS = {[m
+[31m-    interval: 5000,[m
+[31m-    pause: 'hover',[m
+[31m-    wrap: true[m
+[31m-  }[m
+[31m-[m
+[31m-  Carousel.prototype.keydown = function (e) {[m
+[31m-    switch (e.which) {[m
+[31m-      case 37: this.prev(); break[m
+[31m-      case 39: this.next(); break[m
+[31m-      default: return[m
+[31m-    }[m
+[31m-[m
+[31m-    e.preventDefault()[m
+[31m-  }[m
+[31m-[m
+[31m-  Carousel.prototype.cycle = function (e) {[m
+[31m-    e || (this.paused = false)[m
+[31m-[m
+[31m-    this.interval && clearInterval(this.interval)[m
+[31m-[m
+[31m-    this.options.interval[m
+[31m-      && !this.paused[m
+[31m-      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))[m
+[31m-[m
+[31m-    return this[m
+[31m-  }[m
+[31m-[m
+[31m-  Carousel.prototype.getItemIndex = function (item) {[m
+[31m-    this.$items = item.parent().children('.item')[m
+[31m-    return this.$items.index(item || this.$active)[m
+[31m-  }[m
+[31m-[m
+[31m-  Carousel.prototype.to = function (pos) {[m
+[31m-    var that        = this[m
+[31m-    var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'))[m
+[31m-[m
+[31m-    if (pos > (this.$items.length - 1) || pos < 0) return[m
+[31m-[m
+[31m-    if (this.sliding)       return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid"[m
+[31m-    if (activeIndex == pos) return th
