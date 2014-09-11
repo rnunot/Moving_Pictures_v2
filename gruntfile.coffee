@@ -48,15 +48,25 @@ module.exports = (grunt) ->
         ]
 
     jade:
-      compile:
+      compile_views_layouts:
         options:
           pretty: true #Output indented HTML. #(may be turned off for production)
         files: [
           expand: true
-          cwd: 'app/views'
-          src: '**/*.jade'
-          dest: '**/'
-          ext: '.html'
+          cwd: 'app/views/layouts/jade'
+          src: '*.blade.jade'
+          dest: 'app/views/layouts'
+          ext: '.php'
+        ]
+      compile_views_movies:
+        options:
+          pretty: true #Output indented HTML. #(may be turned off for production)
+        files: [
+          expand: true
+          cwd: 'app/views/movies/jade'
+          src: '*.blade.jade'
+          dest: 'app/views/movies'
+          ext: '.php'
         ]
 
     watch:
