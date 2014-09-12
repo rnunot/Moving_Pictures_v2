@@ -3,7 +3,7 @@
                 <li><a href="#">Home</a></li>
                 <li class="active">Movies</li>
 @stop
-        
+
 @section('content')
             <div class="row">
                 @foreach ($movies as $movie)
@@ -20,4 +20,3 @@
                 @endforeach
     	</div>
 @stop
-    	

@@ -17,9 +17,16 @@ Route::get('/', function()
 });
 
 
-Route::get('home', function()
-{
-	return View::make('home');
-});
+Route::get('home', array(
+  'as' => 'home',
+  function()
+  {
+  	return View::make('home');
+  })
+);
 
-Route::resource('movies', 'MoviesController');
+Route::get('movies', array(
+  'as'  => 'movies',
+  'before' => '',
+  'uses' => 'MoviesController@index')
+);

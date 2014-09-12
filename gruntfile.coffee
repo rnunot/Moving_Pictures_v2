@@ -47,27 +47,27 @@ module.exports = (grunt) ->
           ext: '.css'
         ]
 
-    jade:
-      compile_views_layouts:
-        options:
-          pretty: true #Output indented HTML. #(may be turned off for production)
-        files: [
-          expand: true
-          cwd: 'app/views/layouts/jade'
-          src: '*.blade.jade'
-          dest: 'app/views/layouts'
-          ext: '.php'
-        ]
-      compile_views_movies:
-        options:
-          pretty: true #Output indented HTML. #(may be turned off for production)
-        files: [
-          expand: true
-          cwd: 'app/views/movies/jade'
-          src: '*.blade.jade'
-          dest: 'app/views/movies'
-          ext: '.php'
-        ]
+    # jade:
+    #   compile_views_layouts:
+    #     options:
+    #       pretty: true #Output indented HTML. #(may be turned off for production)
+    #     files: [
+    #       expand: true
+    #       cwd: 'app/views/layouts/jade'
+    #       src: '*.blade.jade'
+    #       dest: 'app/views/layouts'
+    #       ext: '.php'
+    #     ]
+    #   compile_views_movies:
+    #     options:
+    #       pretty: true #Output indented HTML. #(may be turned off for production)
+    #     files: [
+    #       expand: true
+    #       cwd: 'app/views/movies/jade'
+    #       src: '*.blade.jade'
+    #       dest: 'app/views/movies'
+    #       ext: '.php'
+    #     ]
 
     watch:
       stylesheets:
@@ -100,7 +100,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-coffee"
 
   # Load jade compiler https://www.npmjs.org/package/grunt-contrib-jade
-  grunt.loadNpmTasks "grunt-contrib-jade"
+  # Jade turned off for now, will stick with laravel's blade
+  #
+  # grunt.loadNpmTasks "grunt-contrib-jade"
 
   # Tasks
   grunt.registerTask "minify", ["newer:uglify", "newer:cssmin"]

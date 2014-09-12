@@ -5,7 +5,7 @@
     	<title>home</title>
     	<meta name="viewport" content="width=device-width, initial-scale=1">
         <link media="all" type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-        <link media="all" type="text/css" rel="stylesheet" href="css/test.css">
+        <link media="all" type="text/css" rel="stylesheet" href="css/main.css">
     </head>
     <body class="">
         <div class="navbar navbar-main navbar-dark navbar-static-top" role="navigation">
@@ -18,7 +18,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Moving Pictures v2</a>
+                        <a class="navbar-brand" href="{{ URL::route('home') }}">Moving Pictures v2</a>
                     </div>
 
                     <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -50,16 +50,17 @@
                                 </li>
                             </ul>
                         </div>
-                        <form class="navbar-form navbar-right" role="search">
-                            <!-- <div class="input-group">
+                        <!-- <form class="navbar-form navbar-right" role="search">
+                            <div class="input-group">
                                 <input type="text" class="form-control">
                                 <span class="input-group-btn">
                                     <button class="btn btn-custom" type="button"><span class="glyphicon glyphicon-search"></span></button>
                                 </span>
-                            </div> --> <!-- /search -->
-                        </form>
+                            </div>
+                        </form> --><!-- /search -->
                         <ul class="nav navbar-nav navbar-left">
-                            <li class="active"><a href="#">Movies</a></li>
+                            <?php if(!isset($active_nav)) $active_nav='' ?>
+                            <li @if($active_nav=='movies') {{ 'class="active"' }} @endif ><a href="{{ URL::route('movies') }}">Movies</a></li>
                             <li><a href="#">Series</a></li>
                             <li><a href="#">Users</a></li>
                         </ul>
@@ -67,13 +68,15 @@
                 </div><!-- /container -->
             </div><!-- /navbar-inner -->
         </div>
-        <div class="container">
+        <div class="container hidden-xs">
             <ol class="breadcrumb small">
                 @yield('breadcrumbs')
             </ol>
         </div>
-        <div class='container main-container dark'>
-            @yield('content')
+        <div class='container'>
+            <div class="main-container">
+                @yield('content')
+            </div>
         </div>
 
         <div class="footer-main footer-dark">

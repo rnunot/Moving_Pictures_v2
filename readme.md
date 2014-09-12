@@ -1,3 +1,5 @@
 ## Moving Pictures v2
 
-Edit at a later date...
+Original Moving Pictures redesign and grunt workflow proof of concept.
+
+Better description to be added at a later date...

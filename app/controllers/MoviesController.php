@@ -7,11 +7,16 @@ class MoviesController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
 	public function index()
 	{
 		$movies = Movie::all();
-		//return View::make('home', compact('movies'));
-		return View::make('movies.index', compact('movies'));
+		$data = array(
+			"active_nav" => "movies",
+			"movies" 		 => $movies
+		);
+
+		return View::make('movies.index', $data);
 	}
 
 	/**
