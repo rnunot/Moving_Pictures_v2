@@ -1,0 +1,143 @@
+//colors
+
+$site_bg = #F2F1EC
+$body_color = #fff
+$nav_underline = #C7F803
+$nav_font_color = #666
+$nav_hover_color = darken($nav_font_color, 20%)
+$drop_shadow_color = rgba(60, 26, 57, 0.2)
+$body_border_color = #DDD //to make drop shadow look more natural
+
+//dark color theme
+
+// $site_bg = #666
+// $body_color = #333
+// $nav_font_color = #DDD
+// $nav_hover_color = darken($nav_font_color, 20%)
+// $drop_shadow_color = lighten(rgba(60, 26, 57, 0.2), 80%)
+
+@font-face
+  font-family "Axis"
+  src url("../fonts/axis.otf")
+
+body
+  background $site_bg
+
+.navbar-main
+  border-bottom 1px solid $drop_shadow_color
+  box-shadow 0px 0px 5px $drop_shadow_color
+  margin-bottom 0
+  border-bottom 1px solid $body_border_color
+  background $body_color
+  color $nav_font_color
+  .navbar-brand
+    color $nav_font_color
+    font-family "Axis", sans-serif
+    text-shadow none
+    padding-top 20px
+    padding-bottom 20px
+    outline 0
+  .navbar-inner
+    .dropdown
+      margin-right 15px
+    .nav
+      li
+        a
+          color $nav_font_color
+          padding-top 20px
+          padding-bottom 20px
+          text-shadow none
+          background none
+          box-shadow none
+          transition background 0.1s linear,opacity 0.1s linear
+          -webkit-font-smoothing antialiased
+          opacity 1
+          font-weight 600
+          outline 0
+        & > a
+          &:hover
+            border-bottom 4px solid $nav_underline
+            padding-bottom 16px
+            box-shadow none
+            color $nav_hover_color
+            opacity 1
+        &.active
+          & > a
+            color $nav_hover_color
+            border-bottom 4px solid $nav_underline
+            padding-bottom 16px
+    .navbar-form
+      padding 5px 0
+    .navbar-toggle
+      color $nav_font_color
+      .icon-bar
+        background-color $nav_font_color
+        &:hover
+          background-color $nav_hover_color
+    .navbar-text
+      padding 5px 0
+
+.main-container
+  background $body_color
+  border 1px solid $body_border_color
+  border-top 0
+  border-bottom 0
+  box-shadow 0px 0px 8px $drop_shadow_color
+  margin-top -20px
+  min-height 100%
+  padding 0 15px
+
+.breadcrumb
+  background none
+
+.btn-custom
+  background-color hsl(0, 0%, 16%) !important
+  background-repeat repeat-x
+  background-image linear-gradient(#5b5b5b, #282828)
+  border-color #282828 #282828 hsl(0, 0%, 11%)
+  color #fff !important
+  text-shadow 0 -1px 0 rgba(0, 0, 0, 0.33)
+  -webkit-font-smoothing antialiased
+  &:hover
+    background-position 0 -15px
+
+.footer-main
+  border-top 1px solid $body_border_color
+  margin-top 20px
+  background $body_color
+  padding 20px 0
+  box-shadow 0px 0px 5px $drop_shadow_color
+
+.dropdown-login
+  background $body_color
+  padding 20px
+  width 300px
+  input
+    &:not(:first-child)
+      margin-top 10px
+
+.dropdown-login-text
+  margin-top 20px
+  margin-bottom -5px
+
+.col-movie
+  border 1px solid transparent
+  &:hover
+    cursor pointer
+    border 1px solid $nav_underline
+
+
+//helper classes
+
+$v-spacer
+  width 100%
+  font-size 0
+  margin 0
+  padding 0
+  border 0
+  display block
+
+for $num in (5 10 15 20 25 30 35 40 45 50)
+  .v-spacer-{$num}
+    @extends $v-spacer
+    height $num px

@@ -34,9 +34,8 @@ module.exports = (grunt) ->
       compile:
         options:
           banner: "/*! <%= pkg.name %> <%= pkg.version %> version: <%= grunt.template.today(\"yyyy-mm-dd\") %> */\n"
-          compress: false
+          compress: false #minifies css, turn on for production
           linenos: false #Specifies if the generated CSS file should contain comments indicating the corresponding stylus line.
-          firebug: false #Specifies if the generated CSS file should contain debug info that can be used by the FireStylus Firebug plugin
           import: ['nib/*'] #Import all nib packages
 
         files: [
@@ -105,6 +104,7 @@ module.exports = (grunt) ->
   # grunt.loadNpmTasks "grunt-contrib-jade"
 
   # Tasks
+  #minifies all js and css files and combines them into one file of each
   grunt.registerTask "minify", ["newer:uglify", "newer:cssmin"]
 
   grunt.registerTask "default", ["stylus"]

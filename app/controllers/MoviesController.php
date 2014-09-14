@@ -1,6 +1,6 @@
 <?php
 
-class MoviesController extends \BaseController {
+class MoviesController extends Controller {
 
 	/**
 	 * Display a listing of movies

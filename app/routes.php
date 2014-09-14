@@ -30,3 +30,10 @@ Route::get('movies', array(
   'before' => '',
   'uses' => 'MoviesController@index')
 );
+
+Route::group(array('prefix' => '', 'before' => ''), function() {
+  Route::get('admin', array(
+    'as' => 'admin',
+    'uses' =>'admin\adminController@index')
+  );
+});
