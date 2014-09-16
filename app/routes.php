@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function()
+Route::get('hello', function()
 {
 	return View::make('hello');
 });
 
 
-Route::get('home', array(
+Route::get('/', array(
   'as' => 'home',
   function()
   {
@@ -31,9 +31,12 @@ Route::get('movies', array(
   'uses' => 'MoviesController@index')
 );
 
-Route::group(array('prefix' => '', 'before' => ''), function() {
-  Route::get('admin', array(
-    'as' => 'admin',
-    'uses' =>'admin\adminController@index')
-  );
-});
+Route::get('admin_panel', array(
+  'as' => 'admin',
+  'uses' =>'admin\adminController@index')
+);
+
+Route::get('admin_panel/login' ,array(
+  'as'    => 'login',
+  'uses'  => 'admin\adminController@login')
+);

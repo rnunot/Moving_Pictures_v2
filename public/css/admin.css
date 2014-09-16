@@ -1,0 +1,8 @@
+/*! movingpi_v2 0.1.0 version: 2014-09-16 */
+@font-face {
+  font-family: "Stroke";
+  src: url("../fonts/stroke-regular.otf");
+}
+body > .header .logo {
+  font-family: "Stroke", sans-serif;
+}
