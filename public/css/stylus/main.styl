@@ -23,6 +23,9 @@ $body_border_color = #DDD //to make drop shadow look more natural
 body
   background $site_bg
 
+
+//navbar
+
 .navbar-main
   border-bottom 1px solid $drop_shadow_color
   box-shadow 0px 0px 5px $drop_shadow_color
@@ -77,6 +80,20 @@ body
     .navbar-text
       padding 5px 0
 
+.dropdown-login
+  background $body_color
+  padding 20px
+  width 300px
+  input
+    &:not(:first-child)
+      margin-top 10px
+
+.dropdown-login-text
+  margin-top 20px
+  margin-bottom -5px
+
+//------------------------------------------------------------------
+
 .main-container
   background $body_color
   border 1px solid $body_border_color
@@ -107,18 +124,6 @@ body
   background $body_color
   padding 20px 0
   box-shadow 0px 0px 5px $drop_shadow_color
-
-.dropdown-login
-  background $body_color
-  padding 20px
-  width 300px
-  input
-    &:not(:first-child)
-      margin-top 10px
-
-.dropdown-login-text
-  margin-top 20px
-  margin-bottom -5px
 
 .col-movie
   border 1px solid transparent

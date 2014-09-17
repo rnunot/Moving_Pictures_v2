@@ -2,7 +2,7 @@
 
 namespace admin;
 
-use View;
+use View, Config;
 
 class AdminController extends \BaseController {
 
@@ -13,20 +13,18 @@ class AdminController extends \BaseController {
 	 * @return Response
 	 */
 
-	public function index()
+	public function display($page='index')
 	{
     $data = array(
-      "page_title"   => "Blank Page",
-      "small_title"  => "Control Panel"
+      "page_title"   => $page
       );
 
-		return View::make('admin.index', $data);
+		return View::make('admin.'.$page, $data);
 	}
 
   public function login()
   {
     $data = array();
-
     return View::make('admin.login', $data);
   }
 

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Admin | Dashboard</title>
+        <title>Admin | @yield('page_title')</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         {{ HTML::style("admin/css/bootstrap.min.css") }}
@@ -10,6 +10,8 @@
         {{ HTML::style("admin/css/font-awesome.min.css") }}
         <!-- Ionicons -->
         {{ HTML::style("admin/css/ionicons.min.css") }}
+        <!-- Extra page css -->
+        @yield('extra_css')
         <!-- Theme style -->
         {{ HTML::style("admin/css/AdminLTE.css") }}
         <!-- Complimentary style -->
@@ -304,7 +306,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="widgets.html">
+                            <a href="{{ URL::route('admin.display','widgets') }}">
                                 <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>
                             </a>
                         </li>
@@ -356,13 +358,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="calendar.html">
+                            <a href="{{ URL::route('admin.display', 'calendar') }}">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                                 <small class="badge pull-right bg-red">3</small>
                             </a>
                         </li>
                         <li>
-                            <a href="mailbox.html">
+                            <a href="{{ URL::route('admin.display', 'mailbox') }}">
                                 <i class="fa fa-envelope"></i> <span>Mailbox</span>
                                 <small class="badge pull-right bg-yellow">12</small>
                             </a>
@@ -422,9 +424,8 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        @yield('title')
-                        Blank page
-                        <small>@yield('subtitle')Control panel</small>
+                        @yield('page_title')
+                        <small>@yield('small_title')</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -444,9 +445,13 @@
 
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        {{-- yield jquery ui if needed  --}}
+        @yield('jquery_ui')
         <!-- Bootstrap -->
         {{ HTML::script('admin/js/bootstrap.min.js') }}
         <!-- AdminLTE App -->
         {{ HTML::script('admin/js/AdminLTE/app.js') }}
+        <!-- Extra js -->
+        @yield('extra_js')
     </body>
 </html>

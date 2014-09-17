@@ -33,10 +33,27 @@ Route::get('movies', array(
 
 Route::get('admin_panel', array(
   'as' => 'admin',
-  'uses' =>'admin\adminController@index')
+  'uses' =>'admin\adminController@display')
 );
 
 Route::get('admin_panel/login' ,array(
   'as'    => 'login',
   'uses'  => 'admin\adminController@login')
 );
+
+Route::get('admin_panel/{page}', array(
+  'as'    => 'admin.display',
+  'uses'  => 'admin\adminController@display')
+);
+
+// Confide routes
+Route::get('users/create', 'UsersController@create');
+Route::post('users', 'UsersController@store');
+Route::get('users/login', 'UsersController@login');
+Route::post('users/login', 'UsersController@doLogin');
+Route::get('users/confirm/{code}', 'UsersController@confirm');
+Route::get('users/forgot_password', 'UsersController@forgotPassword');
+Route::post('users/forgot_password', 'UsersController@doForgotPassword');
+Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
+Route::post('users/reset_password', 'UsersController@doResetPassword');
+Route::get('users/logout', 'UsersController@logout');

@@ -12,12 +12,12 @@ class MoviesTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			Movie::create([
-				'title' => $faker->sentence(5),
+				'title'     => $faker->sentence(5),
 				'imdb_link' => $faker->imageUrl($width = 200, $height = 300),
-	            'duration' => $faker->time,
-	            'director' => $faker->name,
-	            'genre' => $faker->word,
-	            'image' => $faker->imageUrl($width = 200, $height = 300)
+        'duration'  => $faker->time,
+        'director'  => $faker->name,
+        'genre'     => $faker->word,
+        'image'     => $faker->imageUrl($width = 200, $height = 300)
 			]);
 		}
 	}

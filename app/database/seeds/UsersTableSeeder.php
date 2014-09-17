@@ -12,13 +12,13 @@ class UsersTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			User::create(array(
-				'name' => $faker->name,
-				'birthdate' => $faker->date,
-				'email' => $faker->email,
-				'login' => $faker->username,
-				'password' => $index,
-				'activation_string' => $index,
-				'status' => '1'
+        'first_name'        => $faker->name,
+        'last_name'         => $faker->name,
+				'birthdate'         => $faker->date,
+				'email'             => $faker->email,
+				'username'          => $faker->username,
+				'password'          => 'foo_bar_1234',
+				'confirmation_code' => md5(uniqid(mt_rand(), true))
 			));
 		}
 	}

@@ -6,7 +6,9 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"raahul/larryfour": "1.*",
-		"fzaninotto/faker": "1.4.0"
+		"fzaninotto/faker": "1.4.0",
+    "zizaco/confide": "~4.0@dev",
+    "zizaco/entrust": "1.2.*@dev"
 	},
 	"require-dev": {
 	    "way/generators": "2.*"
