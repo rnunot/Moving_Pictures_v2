@@ -88,3 +88,23 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Entrust Route Filters
+|--------------------------------------------------------------------------
+|
+| If a user has `manage_posts`, `manage_comments` or both they will have access.
+|   Entrust::routeNeedsPermission( 'admin/post*', array('manage_posts','manage_comments'), null, false );
+|
+| If a user is a member of `Owner`, `Writer` or both they will have access.
+|   Entrust::routeNeedsRole( 'admin/advanced*', array('Owner','Writer'), null, false );
+|
+| If a user is a member of `Owner`, `Writer` or both, or user has `manage_posts`, `manage_comments` they will have access.
+| You can set the 4th parameter to true then user must be member of Role and must has Permission.
+|   Entrust::routeNeedsRoleOrPermission( 'admin/advanced*', array('Owner','Writer'), array('manage_posts','manage_comments'), null, false);
+|
+*/
+
+//Entrust::routeNeedsRole( 'admin_panel*', 'Admin', Redirect::to('/') );

@@ -47,13 +47,23 @@ Route::get('admin_panel/{page}', array(
 );
 
 // Confide routes
-Route::get('users/create', 'UsersController@create');
+
+Route::get('register', array('as' => 'users.register', 'uses' => 'UsersController@create'));
+
 Route::post('users', 'UsersController@store');
-Route::get('users/login', 'UsersController@login');
+
+Route::get('login', array('as' => 'users.login', 'uses' => 'UsersController@login'));
+
 Route::post('users/login', 'UsersController@doLogin');
-Route::get('users/confirm/{code}', 'UsersController@confirm');
-Route::get('users/forgot_password', 'UsersController@forgotPassword');
+
+Route::get('confirm/{code}', array('as' => 'users.confirm', 'uses' => 'UsersController@confirm'));
+
+Route::get('forgot_password', array('as' => 'users.forgot_password', 'uses' => 'UsersController@forgotPassword'));
+
 Route::post('users/forgot_password', 'UsersController@doForgotPassword');
-Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
+
+Route::get('reset_password/{token}', array('as' => 'users.reset_password', 'uses' => 'UsersController@resetPassword'));
+
 Route::post('users/reset_password', 'UsersController@doResetPassword');
-Route::get('users/logout', 'UsersController@logout');
+
+Route::get('logout', array('as' => 'users.logout', 'uses' => 'UsersController@logout'));

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSerieslistsTable extends Migration {
+class CreateSeriesListsTable extends Migration {
 
     /**
      * Run the migrations.

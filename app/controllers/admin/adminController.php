@@ -25,6 +25,7 @@ class AdminController extends \BaseController {
   public function login()
   {
     $data = array();
+    return var_dump(View::make(Config::get('confide::login_form')));
     return View::make('admin.login', $data);
   }
 

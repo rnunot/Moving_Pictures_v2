@@ -24,7 +24,7 @@ body
   background $site_bg
 
 
-//navbar
+//top navbar ------------------------------------------------------------------------
 
 .navbar-main
   border-bottom 1px solid $drop_shadow_color
@@ -41,14 +41,12 @@ body
     padding-bottom 20px
     outline 0
   .navbar-inner
-    .dropdown
+    div.dropdown
       margin-right 15px
     .nav
       li
-        a
+        & > a
           color $nav_font_color
-          padding-top 20px
-          padding-bottom 20px
           text-shadow none
           background none
           box-shadow none
@@ -57,13 +55,16 @@ body
           opacity 1
           font-weight 600
           outline 0
-        & > a
+          padding-top 20px
+          padding-bottom 20px
+          font-size 16px
           &:hover
-            border-bottom 4px solid $nav_underline
-            padding-bottom 16px
-            box-shadow none
-            color $nav_hover_color
-            opacity 1
+            &:not(.dropdown-toggle)
+              border-bottom 4px solid $nav_underline
+              padding-bottom 16px
+              box-shadow none
+              color $nav_hover_color
+              opacity 1
         &.active
           & > a
             color $nav_hover_color
@@ -107,6 +108,8 @@ body
 .breadcrumb
   background none
 
+// btns -------------------------------------------------------------
+
 .btn-custom
   background-color hsl(0, 0%, 16%) !important
   background-repeat repeat-x
@@ -117,6 +120,11 @@ body
   -webkit-font-smoothing antialiased
   &:hover
     background-position 0 -15px
+
+.btn-backoffice
+  margin-left 0
+
+//----------------------------------------------------------------------
 
 .footer-main
   border-top 1px solid $body_border_color
