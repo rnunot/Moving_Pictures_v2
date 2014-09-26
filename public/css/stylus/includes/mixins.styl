@@ -1,0 +1,12 @@
+// mixins
+
+// bootstrap center block mixin
+center-block()
+  display block
+  margin-left auto
+  margin-right auto
+
+// gradient mixin
+gradient($color=rgb(245, 245, 245, 1), $start=rgb(238, 238, 238, 1), $stop=rgb(255, 255, 255, 1))
+  background $color !important
+  background linear-gradient(top, $stop 0%, $start 100%) !important

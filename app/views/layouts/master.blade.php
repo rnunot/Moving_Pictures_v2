@@ -4,12 +4,18 @@
     <head>
     	<title>home</title>
     	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- bootstrap -->
         {{ HTML::style("css/bootstrap.min.css") }}
-        {{ HTML::style("admin/css/AdminLTE.css") }}
+        {{-- HTML::style("bootflat/css/bootflat.min.css") --}}
+        {{-- AdminLTE styles --}}
+        {{-- HTML::style("admin/css/AdminLTE.css") --}}
+        <!-- Extra page css -->
+        @yield('extra_css')
+        <!-- site styles -->
         {{ HTML::style("css/main.css") }}
     </head>
     <body class="">
-        <div class="navbar navbar-main navbar-dark navbar-static-top" role="navigation">
+        <div class="navbar navbar-main navbar-dark navbar-fixed-top" role="navigation">
             <div class="navbar-inner">
                 <div class="container">
                     <div class="navbar-header">
@@ -29,7 +35,7 @@
                                 <li>
                                     <a href="#" id="dLabel" role="button" data-target="#" class="navbar-link" data-toggle="dropdown">Sign in <span class="caret"></span></a>
                                     <div class="dropdown-menu dropdown-login" role="menu" aria-labelledby="dLabel">
-                                        <form method="POST" action="{{{ URL::to('/users/login') }}}" accept-charset="UTF-8">
+                                        <form method="POST" action="{{{ URL::route('users.login') }}}" accept-charset="UTF-8">
                                             <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
                                             <div class="form-group">
                                                 <label for="email">{{{ Lang::get('confide::confide.username_e_mail') }}}</label>
@@ -45,36 +51,12 @@
                                                     {{{ Lang::get('confide::confide.login.remember') }}}
                                                 </label>
                                             </div>
-                                            @if (Session::get('error'))
-                                                <div class="alert alert-error">{{{ Session::get('error') }}}</div>
-                                            @endif
-
-                                            @if (Session::get('notice'))
-                                                <div class="alert">{{{ Session::get('notice') }}}</div>
-                                            @endif
                                             <div class="form-group">
-                                                <button tabindex="3" type="submit" class="btn btn-custom">{{{ Lang::get('confide::confide.login.submit') }}}</button>
+                                                <button tabindex="3" type="submit" class="btn btn-black btn-login">{{{ Lang::get('confide::confide.login.submit') }}}</button>
                                             </div>
                                         </form>
-                                        <!--
-                                        {{ Form::open(array('role' => 'form')) }}
-                                            <div class="form-group">
-                                                {{ Form::label('email','Username or email') }}
-                                                {{ Form::text('email', '', array('class' => 'form-control', 'placeholder' => 'username or email')) }}
-                                            </div>
-                                            <div class="form-group">
-                                                {{ Form::label('password','Password') }}
-                                                {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'password')) }}
-                                            </div>
-                                            <div class="checkbox">
-                                                <label class="checkbox-inline">
-                                                    {{ Form::checkbox('remember', 'yes', false) }} Remember me
-                                                </label>
-                                            </div>
-                                            {{ Form::button('Sign in', array('type' => 'submit', 'class' => 'btn btn-custom')) }}
-                                        {{Form::close()}} -->
-                                        <p class="dropdown-login-text small text-left">Don't have an account? <a href="{{{ URL::route('users.register') }}}" class="navbar-link">Register here</a><br>
-                                            <a href="#" class="navbar-link">Forgot your password?</a>
+                                        <p class="dropdown-login-text text-left">Don't have an account? <a href="{{{ URL::route('users.register') }}}" class="navbar-link">Register here</a><br>
+                                            <a href="{{{ URL::route('users.forgot_password') }}}" class="navbar-link">Forgot your password?</a>
                                         </p>
                                     </div>
                                 </li>
@@ -147,26 +129,71 @@
             </div><!-- /navbar-inner -->
         </div>
         <div class="container hidden-xs">
-            <ol class="breadcrumb small">
+            <!--<ol class="breadcrumb small">
                 @yield('breadcrumbs')
-            </ol>
+            </ol>-->
         </div>
-        <div class='container'>
-            <div class="main-container">
-                @yield('content')
-            </div>
-        </div>
-
-        <div class="footer-main footer-dark">
-            <div class="container">
-                <div class="row">
-
-                    <p>add text</p>
+        <div class="body">
+            @yield('pre_content')
+            <div class='container'>
+                <div class="main-container">
+                    @yield('content')
                 </div>
             </div>
         </div>
+        <footer class="footer-main">
+            <div class="container">
+                <div class="v-spacer-20"></div>
+                <div class="row margin-0">
+                    <div class="col-sm-3">
+                        <span class="brand">Moving Pictures v2<span>
+                    </div>
+                    <div class="col-sm-3">
+                        <ul class="">
+                            <li class="group-title">Group 1</li>
+                            <li><a href="#">bigger link 1</a></li>
+                            <li><a href="#">bigger than bigger link 2</a></li>
+                            <li><a href="#">smaller than bigger link 3</a></li>
+                            <li><a href="#">normal link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <ul class="">
+                            <li class="group-title">Group 2</li>
+                            <li><a href="#">bigger link 1</a></li>
+                            <li><a href="#">bigger than bigger link 2</a></li>
+                            <li><a href="#">smaller than bigger link 3</a></li>
+                            <li><a href="#">normal link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <ul class="">
+                            <li class="group-title">Group 3</li>
+                            <li><a href="#">bigger link 1</a></li>
+                            <li><a href="#">bigger than bigger link 2</a></li>
+                            <li><a href="#">smaller than bigger link 3</a></li>
+                            <li><a href="#">normal link 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="v-spacer-30"></div>
+                <div class="col-xs-12">
+                    <div class="text-center">
+                        &copy;Copyright {{date('Y',strtotime('now'))}}. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <!-- jQuery fallback -->
+        <script>
+        if (!window.jQuery) {
+            document.write('<script src="js/jquery.min.js"><\/script>');
+        }
+        </script>
+        {{ HTML::script('js/bootstrap.min.js') }}
+        <!-- Extra js -->
+        @yield('extra_js')
         <script>
 
             function setBtnMargin() {

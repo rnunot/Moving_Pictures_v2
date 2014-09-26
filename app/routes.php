@@ -50,20 +50,20 @@ Route::get('admin_panel/{page}', array(
 
 Route::get('register', array('as' => 'users.register', 'uses' => 'UsersController@create'));
 
-Route::post('users', 'UsersController@store');
+Route::post('users', ['as' => 'users.store', 'uses' => 'UsersController@store']);
 
 Route::get('login', array('as' => 'users.login', 'uses' => 'UsersController@login'));
 
-Route::post('users/login', 'UsersController@doLogin');
+Route::post('login', ['as' => 'users.login', 'uses' => 'UsersController@doLogin']);
 
 Route::get('confirm/{code}', array('as' => 'users.confirm', 'uses' => 'UsersController@confirm'));
 
 Route::get('forgot_password', array('as' => 'users.forgot_password', 'uses' => 'UsersController@forgotPassword'));
 
-Route::post('users/forgot_password', 'UsersController@doForgotPassword');
+Route::post('forgot_password', ['as' => 'users.forgot_password', 'uses' => 'UsersController@doForgotPassword']);
 
 Route::get('reset_password/{token}', array('as' => 'users.reset_password', 'uses' => 'UsersController@resetPassword'));
 
-Route::post('users/reset_password', 'UsersController@doResetPassword');
+Route::post('reset_password', ['as' => 'users.reset_password', 'uses' => 'UsersController@doResetPassword']);
 
 Route::get('logout', array('as' => 'users.logout', 'uses' => 'UsersController@logout'));

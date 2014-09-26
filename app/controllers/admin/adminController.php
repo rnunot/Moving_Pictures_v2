@@ -21,12 +21,12 @@ class AdminController extends \BaseController {
 
 		return View::make('admin.'.$page, $data);
 	}
-
+  //should be removed
   public function login()
   {
     $data = array();
-    return var_dump(View::make(Config::get('confide::login_form')));
     return View::make('admin.login', $data);
+
   }
 
 	/**

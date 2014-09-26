@@ -1,0 +1,98 @@
+lesscss-percentage(n)
+  (n * 100)%
+navbar-variant(color, font-color=rgba(255, 255, 255, 0.8), hover-color=rgb(246, 246, 246, 1), hover-bg=rgba(0, 0, 0, 0.1))
+  background-color color
+  .nav a
+    color font-color
+  .nav > li > a:hover, .nav > li > a:active, .nav > li > a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus
+    background hover-bg
+    color hover-color
+  .navbar-right > .nav
+    margin-right 10px
+  .sidebar-toggle .icon-bar
+    background font-color
+  .sidebar-toggle:hover .icon-bar
+    background hover-color !important
+logo-variant(color)
+  background-color color
+  color #f9f9f9
+  > a
+    color #f9f9f9
+  &:hover
+    background darken(color, 1%)
+box-solid-variant(color)
+  > .box-header
+    color #fff
+    background color
+    background-color color
+    a
+      color #444
+transform(degree)
+  transform rotate(degree)
+  -ms-transform rotate(degree)
+  /* IE 9 */
+  -webkit-transform rotate(degree)
+  /* Safari and Chrome */
+clearfix()
+  &:before, &:after
+    display table
+    content " "
+  &:after
+    clear both
+.clearfix
+  clearfix()
+border-radius(radius)
+  -webkit-border-radius radius
+  -moz-border-radius radius
+  border-radius radius
+border-radius(top-left, top-right, bottom-left, bottom-right)
+  -webkit-border-top-left-radius top-left
+  -webkit-border-top-right-radius top-right
+  -webkit-border-bottom-right-radius bottom-right
+  -webkit-border-bottom-left-radius bottom-left
+  -moz-border-radius-topleft top-left
+  -moz-border-radius-topright top-right
+  -moz-border-radius-bottomright bottom-right
+  -moz-border-radius-bottomleft bottom-left
+  border-top-left-radius top-left
+  border-top-right-radius top-right
+  border-bottom-right-radius bottom-right
+  border-bottom-left-radius bottom-left
+progress-bar-variant(color)
+  background-color color
+  .progress-striped &
+    @extend . gradient-striped
+animation(animation)
+  -webkit-animation animation
+  animation animation
+gradient-striped(color=rgba(255, 255, 255, 0.15), angle=45deg)
+  background-image -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, color), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, color), color-stop(0.75, color), color-stop(0.75, transparent), to(transparent))
+  background-image -webkit-linear-gradient(angle, color 25%, transparent 25%, transparent 50%, color 50%, color 75%, transparent 75%, transparent)
+  background-image -moz-linear-gradient(angle, color 25%, transparent 25%, transparent 50%, color 50%, color 75%, transparent 75%, transparent)
+  background-image linear-gradient(angle, color 25%, transparent 25%, transparent 50%, color 50%, color 75%, transparent 75%, transparent)
+.gradient-striped
+  gradient-striped()
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+gradient(color=rgb(245, 245, 245, 1), start=rgb(238, 238, 238, 1), stop=rgb(255, 255, 255, 1))
+  background color
+  background -webkit-gradient(linear, left bottom, left top, color-stop(0, start), color-stop(1, stop))
+  background -ms-linear-gradient(bottom, start, stop)
+  background -moz-linear-gradient(center bottom, start 0%, stop 100%)
+  background -o-linear-gradient(stop, start)
+  filter e(s("progid:DXImageTransform.Microsoft.gradient(startColorstr='%s', endColorstr='%s', GradientType=0)", stop, start))
+.gradient
+  gradient()
+bw-gradient(color=rgb(245, 245, 245, 1), start=0, stop=255)
+  background color
+  background -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(start, start, start)), color-stop(1, rgb(stop, stop, stop)))
+  background -ms-linear-gradient(bottom, rgb(start, start, start) 0%, rgb(stop, stop, stop) 100%)
+  background -moz-linear-gradient(center bottom, rgb(start, start, start) 0%, rgb(stop, stop, stop) 100%)
+  background -o-linear-gradient(rgb(stop, stop, stop), rgb(start, start, start))
+  filter e(s("progid:DXImageTransform.Microsoft.gradient(startColorstr='%s', endColorstr='%s', GradientType=0)", rgb(stop, stop, stop), rgb(start, start, start)))
+.bw-gradient
+  bw-gradient()

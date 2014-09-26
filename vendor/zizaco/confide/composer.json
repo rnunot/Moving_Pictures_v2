@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "~4.2"
+        "illuminate/support": "~4.2|~5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
@@ -39,7 +39,8 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0-dev"
+            "dev-master": "4.0-dev",
+            "dev-username-optional": "4.1-dev"
         }
     }
 }

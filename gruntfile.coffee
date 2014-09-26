@@ -70,7 +70,7 @@ module.exports = (grunt) ->
 
     watch:
       stylesheets:
-        files: 'public/css/stylus/*.styl'
+        files: 'public/css/stylus/**/*.styl'
         tasks: ['stylesheets']
 
       coffeescript:

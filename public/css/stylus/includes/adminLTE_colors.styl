@@ -1,0 +1,180 @@
+//vars
+
+$light-blue = rgba(60, 141, 188, 1)
+$red = rgb(245, 105, 84, 1)
+$green = rgba(0, 166, 90, 1)
+$aqua = rgba(0, 192, 239, 1)
+$yellow = rgba(243, 156, 18, 1)
+$blue = rgba(0, 115, 183, 1)
+$navy = rgba(0, 31, 63, 1)
+$teal = rgba(57, 204, 204, 1)
+$olive = rgba(61, 153, 112, 1)
+$lime = rgba(1, 255, 112, 1)
+$orange = rgba(255, 133, 27, 1)
+$fuchsia = rgba(240, 18, 190, 1)
+$purple = rgba(147, 42, 182, 1)
+$maroon = rgba(133, 20, 75, 1)
+$black = rgba(34, 34, 34, 1)
+$gray = rgba(234, 234, 236, 1)
+
+// Background colors ---------------------
+.bg-red,
+.bg-yellow,
+.bg-aqua,
+.bg-blue,
+.bg-light-blue,
+.bg-green,
+.bg-navy,
+.bg-teal,
+.bg-olive,
+.bg-lime,
+.bg-orange,
+.bg-fuchsia,
+.bg-purple,
+.bg-maroon,
+.bg-black
+  color #f9f9f9 !important
+.bg-gray
+  background-color $gray !important
+
+.bg-black
+  background-color $black !important
+
+.bg-red
+  background-color $red !important
+
+.bg-yellow
+  background-color $yellow !important
+
+.bg-aqua
+  background-color $aqua !important
+
+.bg-blue
+  background-color $blue !important
+
+.bg-light-blue
+  background-color $light-blue !important
+
+.bg-green
+  background-color $green !important
+
+.bg-navy
+  background-color $navy !important
+
+.bg-teal
+  background-color $teal !important
+
+.bg-olive
+  background-color $olive !important
+
+.bg-lime
+  background-color $lime !important
+
+.bg-orange
+  background-color $orange !important
+
+.bg-fuchsia
+  background-color $fuchsia !important
+
+.bg-purple
+  background-color $purple !important
+
+.bg-maroon
+  background-color $maroon !important
+
+// Text colors --------------------------------------
+.text-red
+  color $red !important
+
+.text-yellow
+  color $yellow !important
+
+.text-aqua
+  color $aqua !important
+
+.text-blue
+  color $blue !important
+
+.text-black
+  color $black !important
+
+.text-light-blue
+  color $light-blue !important
+
+.text-green
+  color $green !important
+
+.text-navy
+  color $navy !important
+
+.text-teal
+  color $teal !important
+
+.text-olive
+  color $olive !important
+
+.text-lime
+  color $lime !important
+
+.text-orange
+  color $orange !important
+
+.text-fuchsia
+  color $fuchsia !important
+
+.text-purple
+  color $purple !important
+
+.text-maroon
+  color $maroon !important
+
+
+// Gradients -----------------------------
+
+// gradient mixin
+gradient($color=rgb(245, 245, 245, 1), $start=rgb(238, 238, 238, 1), $stop=rgb(255, 255, 255, 1))
+  background $color !important
+  background linear-gradient(top, $stop 0%, $start 100%) !important
+
+$gradient-text
+  color #fff
+
+.bg-teal-gradient
+  gradient($teal, $teal, lighten($teal, 16%))
+  @extends $gradient-text
+
+.bg-light-blue-gradient
+  gradient($light-blue, $light-blue, lighten($light-blue, 12%))
+  @extends $gradient-text
+
+.bg-blue-gradient
+  gradient($blue, $blue, lighten($blue, 7%))
+  @extends $gradient-text
+
+.bg-aqua-gradient
+  gradient($aqua, $aqua, lighten($aqua, 7%))
+  @extends $gradient-text
+
+.bg-yellow-gradient
+  gradient($yellow, $yellow, lighten($yellow, 16%))
+  @extends $gradient-text
+
+.bg-purple-gradient
+  gradient($purple, $purple, lighten($purple, 16%))
+  @extends $gradient-text
+
+.bg-green-gradient
+  gradient($green, $green, lighten($green, 7%))
+  @extends $gradient-text
+
+.bg-red-gradient
+  gradient($red, $red, lighten($red, 10%))
+  @extends $gradient-text
+
+.bg-black-gradient
+  gradient($black, $black, lighten($black, 10%))
+  @extends $gradient-text
+
+.bg-maroon-gradient
+  gradient($maroon, $maroon, lighten($maroon, 10%))
+  @extends $gradient-text

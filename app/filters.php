@@ -107,4 +107,4 @@ Route::filter('csrf', function()
 |
 */
 
-//Entrust::routeNeedsRole( 'admin_panel*', 'Admin', Redirect::to('/') );
+Entrust::routeNeedsRole( 'admin_panel*', 'Admin', Redirect::to('/') );

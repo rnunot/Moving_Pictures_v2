@@ -43,7 +43,7 @@
                 </div>
             </form>
 
-            <!-- <div class="margin text-center">
+            <-- <div class="margin text-center">
                 <span>Sign in using social networks</span>
                 <br/>
                 <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>

@@ -65,7 +65,8 @@ class UsersController extends Controller
         if (Confide::user()) {
             return Redirect::to('/');
         } else {
-            return View::make(Config::get('confide::login_form'));
+            return View::make('users.login');
+            //return View::make(Config::get('confide::login_form'));
         }
     }
 
@@ -82,13 +83,21 @@ class UsersController extends Controller
         if ($repo->login($input)) {
             return Redirect::intended('/');
         } else {
-            if ($repo->isThrottled($input)) {
+            if ($repo->isThrottled(array_get($input,'email'))) {
                 $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
+                $err_log = "Throtled";
             } elseif ($repo->existsButNotConfirmed($input)) {
                 $err_msg = Lang::get('confide::confide.alerts.not_confirmed');
+                $err_log = "Not confirmed";
             } else {
                 $err_msg = Lang::get('confide::confide.alerts.wrong_credentials');
+                $err_log = "Wrong credentials.";
             }
+
+            // TO DO
+            //
+            // implement logging of failled atempts
+            //
 
             return Redirect::action('UsersController@login')
                 ->withInput(Input::except('password'))

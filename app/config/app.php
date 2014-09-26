@@ -125,6 +125,7 @@ return array(
 		'Raahul\LarryFour\LarryFourServiceProvider',
     'Zizaco\Confide\ServiceProvider',
     'Zizaco\Entrust\EntrustServiceProvider',
+    'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 
 	),
 
