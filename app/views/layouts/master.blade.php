@@ -52,7 +52,7 @@
                                                 </label>
                                             </div>
                                             <div class="form-group">
-                                                <button tabindex="3" type="submit" class="btn btn-black btn-login">{{{ Lang::get('confide::confide.login.submit') }}}</button>
+                                                <button tabindex="3" type="submit" class="btn btn-black btn-login">Sign in</button>
                                             </div>
                                         </form>
                                         <p class="dropdown-login-text text-left">Don't have an account? <a href="{{{ URL::route('users.register') }}}" class="navbar-link">Register here</a><br>

@@ -2,6 +2,8 @@
 /bootstrap/compiled.php
 composer.phar
 composer.lock
+vendor/
+AdminLTE/
 .env.*.php
 .env.php
 .DS_Store

@@ -15,7 +15,7 @@
 @section('content')
     <div clas="row">
       <div class="col-md-6 col-md-offset-3">
-        <div class="col-xs-4 text-right"><h1>Login</h1></div><div class="clearfix"></div>
+        <div class="col-xs-4 text-right"><h1>Sign in</h1></div><div class="clearfix"></div>
         <div class="v-spacer-20"></div>
         <form class="form-horizontal" method="POST" action="{{{ URL::route('users.login') }}}" accept-charset="UTF-8">
             <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
@@ -33,7 +33,7 @@
             </div>
             <div class="col-sm-offset-4 col-sm-8">
                 @if (Session::get('error'))
-                    <div class="text-red"><i class="fa fa-ban"></i> {{{ Session::get('error') }}}</div>
+                    <div class="text-alert"><i class="fa fa-ban"></i> {{{ Session::get('error') }}}</div>
                 @endif
 
                 @if (Session::get('notice'))
@@ -50,7 +50,7 @@
             <div class="v-spacer-20"></div>
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
-                    <button tabindex="7" type="submit" class="btn btn-black btn-login">{{{ Lang::get('confide::confide.login.submit') }}}</button>
+                    <button tabindex="7" type="submit" class="btn btn-black btn-login">Sign in</button>
                     <div class="v-spacer-20"></div>
                     <p class="">
                         Don't have an account? <a href="{{{ URL::route('users.register') }}}" class="navbar-link">Register here</a><br>
