@@ -306,6 +306,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ URL::route('admin.display','users') }}">
+                                <i class="fa fa-users"></i> <span>Users</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ URL::route('admin.display','widgets') }}">
                                 <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>
                             </a>

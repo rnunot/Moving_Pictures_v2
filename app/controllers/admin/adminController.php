@@ -2,7 +2,7 @@
 
 namespace admin;
 
-use View, Config;
+use View, Config, User, Datatables, Auth, Session, Redirect;
 
 class AdminController extends \BaseController {
 
@@ -21,12 +21,38 @@ class AdminController extends \BaseController {
 
 		return View::make('admin.'.$page, $data);
 	}
+
   //should be removed
   public function login()
   {
     $data = array();
     return View::make('admin.login', $data);
 
+  }
+
+  public function get_users_table()
+  {
+    $users = User::select(['id', 'first_name', 'last_name', 'birthdate', 'sex', 'username', 'email', 'created_at']);
+    return Datatables::of($users)
+                        ->add_column('operations','<a href="{{ URL::Route(\'admin.impersonate\',$id) }}"><i class="fa fa-sign-in"></i></a>')
+                        ->make();
+  }
+
+  public function impersonate($id)
+  {
+    $original_id = Auth::user()->id;
+    Auth::loginUsingId($id);
+    Session::put('impersonated', true);
+    Session::put('original_user', $original_id);
+    return Redirect::intended('/');
+  }
+
+  public function deImpersonate($id)
+  {
+    Auth::loginUsingId($id);
+    Session::put('impersonated', false);
+    Session::put('original_user', '');
+    return Redirect::intended('/');
   }
 
 	/**

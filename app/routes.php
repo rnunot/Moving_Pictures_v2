@@ -46,6 +46,12 @@ Route::get('admin_panel/{page}', array(
   'uses'  => 'admin\adminController@display')
 );
 
+Route::post('admin/get_users_table', ['as' => 'admin.get_users_table', 'uses' => 'admin\adminController@get_users_table']);
+
+Route::get('admin/impersonate/{id}', ['as' => 'admin.impersonate', 'uses' => 'admin\adminController@impersonate']);
+
+Route::get('admin/de-impersonate/{id}', ['as' => 'admin.de_impersonate', 'uses' => 'admin\adminController@deImpersonate']);
+
 // Confide routes
 
 Route::get('register', array('as' => 'users.register', 'uses' => 'UsersController@create'));

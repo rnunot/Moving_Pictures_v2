@@ -126,6 +126,7 @@ return array(
     'Zizaco\Confide\ServiceProvider',
     'Zizaco\Entrust\EntrustServiceProvider',
     'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+    'Bllim\Datatables\DatatablesServiceProvider',
 
 	),
 
@@ -195,6 +196,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
     'Confide'         => 'Zizaco\Confide\Facade',
     'Entrust'         => 'Zizaco\Entrust\EntrustFacade',
+    'Datatables'      => 'Bllim\Datatables\Facade\Datatables',
 
 	),
 

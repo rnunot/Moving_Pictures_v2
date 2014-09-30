@@ -27,7 +27,6 @@
                         </button>
                         <a class="navbar-brand" href="{{ URL::route('home') }}">Moving Pictures v2</a>
                     </div>
-
                     <div class="collapse navbar-collapse" id="navbar-collapse">
                         @if(!Auth::check())
                         <div class="dropdown">
@@ -134,6 +133,15 @@
             </ol>-->
         </div>
         <div class="body">
+
+
+            @if (Auth::check() and Session::get('impersonated'))
+                <div class="">
+                    You are impersonating {{{ Auth::user()->first_name }}}. <a href="{{{ URL::route('admin.de_impersonate', Session::get('original_user')) }}}">Go back</a>
+                </div>
+            @endif
+
+
             @yield('pre_content')
             <div class='container'>
                 <div class="main-container">

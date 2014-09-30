@@ -9,7 +9,8 @@
 		"fzaninotto/faker": "1.4.0",
     "zizaco/confide": "~4.0@dev",
     "zizaco/entrust": "1.2.*@dev",
-    "cviebrock/eloquent-sluggable": "2.*"
+    "cviebrock/eloquent-sluggable": "2.*",
+    "bllim/datatables": "*"
 	},
 	"require-dev": {
 	    "way/generators": "2.*"
