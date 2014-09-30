@@ -34,7 +34,7 @@
                                 <li>
                                     <a href="#" id="dLabel" role="button" data-target="#" class="navbar-link" data-toggle="dropdown">Sign in <span class="caret"></span></a>
                                     <div class="dropdown-menu dropdown-login" role="menu" aria-labelledby="dLabel">
-                                        <form method="POST" action="{{{ URL::route('users.login') }}}" accept-charset="UTF-8">
+                                        <form method="POST" action="{{{ URL::route('users.do_login') }}}" accept-charset="UTF-8">
                                             <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
                                             <div class="form-group">
                                                 <label for="email">{{{ Lang::get('confide::confide.username_e_mail') }}}</label>

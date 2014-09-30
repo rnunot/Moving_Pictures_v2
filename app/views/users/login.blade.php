@@ -17,7 +17,7 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="col-xs-4 text-right"><h1>Sign in</h1></div><div class="clearfix"></div>
         <div class="v-spacer-20"></div>
-        <form class="form-horizontal" method="POST" action="{{{ URL::route('users.login') }}}" accept-charset="UTF-8">
+        <form class="form-horizontal" method="POST" action="{{{ URL::route('users.do_login') }}}" accept-charset="UTF-8">
             <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
             <div class="form-group">
                 <label class="col-sm-4 control-label" for="email">{{{ Lang::get('confide::confide.username_e_mail') }}}</label>
