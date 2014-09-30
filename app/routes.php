@@ -58,7 +58,7 @@ Route::get('register', array('as' => 'users.register', 'uses' => 'UsersControlle
 
 Route::post('users', ['as' => 'users.store', 'uses' => 'UsersController@store']);
 
-Route::get('login', array('as' => 'users.login', 'uses' => 'UsersController@login'));
+Route::get('signin', array('as' => 'users.login', 'uses' => 'UsersController@login'));
 
 Route::post('login', ['as' => 'users.do_login', 'uses' => 'UsersController@doLogin']);
 
