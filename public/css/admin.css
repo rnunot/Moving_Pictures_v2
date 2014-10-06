@@ -1,4 +1,4 @@
-/*! movingpi_v2 0.1.0 version: 2014-09-30 */
+/*! movingpi_v2 0.1.0 version: 2014-10-03 */
 .bg-light-blue {
   background-color: #3c8dbc !important;
 }
@@ -165,12 +165,119 @@
 .bg-blue-gradient,
 .bg-aqua-gradient,
 .bg-yellow-gradient,
+.bg-orange-gradient,
 .bg-purple-gradient,
 .bg-green-gradient,
+.bg-olive-gradient,
 .bg-red-gradient,
 .bg-black-gradient,
+.bg-gray-gradient,
 .bg-maroon-gradient {
   color: #fff;
+}
+.bg-teal-gradient {
+  background: #39cccc !important;
+  background: -webkit-linear-gradient(top, #59d4d4 0%, #39cccc 100%) !important;
+  background: -moz-linear-gradient(top, #59d4d4 0%, #39cccc 100%) !important;
+  background: -o-linear-gradient(top, #59d4d4 0%, #39cccc 100%) !important;
+  background: -ms-linear-gradient(top, #59d4d4 0%, #39cccc 100%) !important;
+  background: linear-gradient(to bottom, #59d4d4 0%, #39cccc 100%) !important;
+}
+.bg-light-blue-gradient {
+  background: #3c8dbc !important;
+  background: -webkit-linear-gradient(top, #509cc7 0%, #3c8dbc 100%) !important;
+  background: -moz-linear-gradient(top, #509cc7 0%, #3c8dbc 100%) !important;
+  background: -o-linear-gradient(top, #509cc7 0%, #3c8dbc 100%) !important;
+  background: -ms-linear-gradient(top, #509cc7 0%, #3c8dbc 100%) !important;
+  background: linear-gradient(to bottom, #509cc7 0%, #3c8dbc 100%) !important;
+}
+.bg-blue-gradient {
+  background: #0073b7 !important;
+  background: -webkit-linear-gradient(top, #0081ce 0%, #0073b7 100%) !important;
+  background: -moz-linear-gradient(top, #0081ce 0%, #0073b7 100%) !important;
+  background: -o-linear-gradient(top, #0081ce 0%, #0073b7 100%) !important;
+  background: -ms-linear-gradient(top, #0081ce 0%, #0073b7 100%) !important;
+  background: linear-gradient(to bottom, #0081ce 0%, #0073b7 100%) !important;
+}
+.bg-aqua-gradient {
+  background: #00c0ef !important;
+  background: -webkit-linear-gradient(top, #03cdff 0%, #00c0ef 100%) !important;
+  background: -moz-linear-gradient(top, #03cdff 0%, #00c0ef 100%) !important;
+  background: -o-linear-gradient(top, #03cdff 0%, #00c0ef 100%) !important;
+  background: -ms-linear-gradient(top, #03cdff 0%, #00c0ef 100%) !important;
+  background: linear-gradient(to bottom, #03cdff 0%, #00c0ef 100%) !important;
+}
+.bg-yellow-gradient {
+  background: #f39c12 !important;
+  background: -webkit-linear-gradient(top, #f5ac38 0%, #f39c12 100%) !important;
+  background: -moz-linear-gradient(top, #f5ac38 0%, #f39c12 100%) !important;
+  background: -o-linear-gradient(top, #f5ac38 0%, #f39c12 100%) !important;
+  background: -ms-linear-gradient(top, #f5ac38 0%, #f39c12 100%) !important;
+  background: linear-gradient(to bottom, #f5ac38 0%, #f39c12 100%) !important;
+}
+.bg-orange-gradient {
+  background: #ff851b !important;
+  background: -webkit-linear-gradient(top, #ff993f 0%, #ff851b 100%) !important;
+  background: -moz-linear-gradient(top, #ff993f 0%, #ff851b 100%) !important;
+  background: -o-linear-gradient(top, #ff993f 0%, #ff851b 100%) !important;
+  background: -ms-linear-gradient(top, #ff993f 0%, #ff851b 100%) !important;
+  background: linear-gradient(to bottom, #ff993f 0%, #ff851b 100%) !important;
+}
+.bg-purple-gradient {
+  background: #932ab6 !important;
+  background: -webkit-linear-gradient(top, #ac3cd2 0%, #932ab6 100%) !important;
+  background: -moz-linear-gradient(top, #ac3cd2 0%, #932ab6 100%) !important;
+  background: -o-linear-gradient(top, #ac3cd2 0%, #932ab6 100%) !important;
+  background: -ms-linear-gradient(top, #ac3cd2 0%, #932ab6 100%) !important;
+  background: linear-gradient(to bottom, #ac3cd2 0%, #932ab6 100%) !important;
+}
+.bg-green-gradient {
+  background: #00a65a !important;
+  background: -webkit-linear-gradient(top, #00be67 0%, #00a65a 100%) !important;
+  background: -moz-linear-gradient(top, #00be67 0%, #00a65a 100%) !important;
+  background: -o-linear-gradient(top, #00be67 0%, #00a65a 100%) !important;
+  background: -ms-linear-gradient(top, #00be67 0%, #00a65a 100%) !important;
+  background: linear-gradient(to bottom, #00be67 0%, #00a65a 100%) !important;
+}
+.bg-olive-gradient {
+  background: #3d9970 !important;
+  background: -webkit-linear-gradient(top, #43a87b 0%, #3d9970 100%) !important;
+  background: -moz-linear-gradient(top, #43a87b 0%, #3d9970 100%) !important;
+  background: -o-linear-gradient(top, #43a87b 0%, #3d9970 100%) !important;
+  background: -ms-linear-gradient(top, #43a87b 0%, #3d9970 100%) !important;
+  background: linear-gradient(to bottom, #43a87b 0%, #3d9970 100%) !important;
+}
+.bg-red-gradient {
+  background: #f56954 !important;
+  background: -webkit-linear-gradient(top, #f67865 0%, #f56954 100%) !important;
+  background: -moz-linear-gradient(top, #f67865 0%, #f56954 100%) !important;
+  background: -o-linear-gradient(top, #f67865 0%, #f56954 100%) !important;
+  background: -ms-linear-gradient(top, #f67865 0%, #f56954 100%) !important;
+  background: linear-gradient(to bottom, #f67865 0%, #f56954 100%) !important;
+}
+.bg-black-gradient {
+  background: #222 !important;
+  background: -webkit-linear-gradient(top, #383838 0%, #222 100%) !important;
+  background: -moz-linear-gradient(top, #383838 0%, #222 100%) !important;
+  background: -o-linear-gradient(top, #383838 0%, #222 100%) !important;
+  background: -ms-linear-gradient(top, #383838 0%, #222 100%) !important;
+  background: linear-gradient(to bottom, #383838 0%, #222 100%) !important;
+}
+.bg-gray-gradient {
+  background: #eaeaec !important;
+  background: -webkit-linear-gradient(top, #ececee 0%, #eaeaec 100%) !important;
+  background: -moz-linear-gradient(top, #ececee 0%, #eaeaec 100%) !important;
+  background: -o-linear-gradient(top, #ececee 0%, #eaeaec 100%) !important;
+  background: -ms-linear-gradient(top, #ececee 0%, #eaeaec 100%) !important;
+  background: linear-gradient(to bottom, #ececee 0%, #eaeaec 100%) !important;
+}
+.bg-maroon-gradient {
+  background: #85144b !important;
+  background: -webkit-linear-gradient(top, #a4195c 0%, #85144b 100%) !important;
+  background: -moz-linear-gradient(top, #a4195c 0%, #85144b 100%) !important;
+  background: -o-linear-gradient(top, #a4195c 0%, #85144b 100%) !important;
+  background: -ms-linear-gradient(top, #a4195c 0%, #85144b 100%) !important;
+  background: linear-gradient(to bottom, #a4195c 0%, #85144b 100%) !important;
 }
 @font-face {
   font-family: "Stroke";
@@ -178,4 +285,13 @@
 }
 body > .header .logo {
   font-family: "Stroke", sans-serif;
+}
+span.operations {
+  word-spacing: 10px;
+}
+span.operations .impersonate {
+  margin-right: 15px;
+}
+.js-confirmed-column .display-none {
+  display: none;
 }

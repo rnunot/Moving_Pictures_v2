@@ -15,7 +15,14 @@
         {{ HTML::style("css/main.css") }}
     </head>
     <body class="">
-        <div class="navbar navbar-main navbar-dark navbar-fixed-top" role="navigation">
+
+        @if (Auth::check() and Session::get('impersonated'))
+            <div class="impersonating-alert">
+                You are impersonating {{{ Auth::user()->first_name }}}. <a href="{{{ URL::route('admin.de_impersonate', Session::get('original_user')) }}}">Go back</a>
+            </div>
+        @endif
+
+        <div class="navbar navbar-main navbar-dark navbar-fixed-top @if (Auth::check() and Session::get('impersonated')) {{{ 'navbar-impersonated' }}} @endif" role="navigation">
             <div class="navbar-inner">
                 <div class="container">
                     <div class="navbar-header">
@@ -92,7 +99,7 @@
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                            <a href="{{ URL::route('profile.display') }}" class="btn btn-default btn-flat">Profile</a>
                                         </div>
 
                                         @if(Auth::user()->hasRole('Admin'))
@@ -134,15 +141,8 @@
         </div>
         <div class="body">
 
-
-            @if (Auth::check() and Session::get('impersonated'))
-                <div class="">
-                    You are impersonating {{{ Auth::user()->first_name }}}. <a href="{{{ URL::route('admin.de_impersonate', Session::get('original_user')) }}}">Go back</a>
-                </div>
-            @endif
-
-
             @yield('pre_content')
+
             <div class='container'>
                 <div class="main-container">
                     @yield('content')

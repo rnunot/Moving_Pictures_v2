@@ -31,6 +31,8 @@ Route::get('movies', array(
   'uses' => 'MoviesController@index')
 );
 
+//admin routes
+
 Route::get('admin_panel', array(
   'as' => 'admin',
   'uses' =>'admin\adminController@display')
@@ -50,7 +52,13 @@ Route::post('admin/get_users_table', ['as' => 'admin.get_users_table', 'uses' =>
 
 Route::get('admin/impersonate/{id}', ['as' => 'admin.impersonate', 'uses' => 'admin\adminController@impersonate']);
 
-Route::get('admin/de-impersonate/{id}', ['as' => 'admin.de_impersonate', 'uses' => 'admin\adminController@deImpersonate']);
+Route::get('admin/de-impersonate/{id}', ['as' => 'admin.de_impersonate','uses' => 'admin\adminController@deImpersonate']);
+
+// Profile routes
+
+Route::get('user/{id?}', ['as']);
+
+Route::get('user/{id?}', array('as' => 'profile.display', 'before' => 'auth', 'uses' => 'profile\ProfileController@show'));
 
 // Confide routes
 
@@ -60,7 +68,7 @@ Route::post('users', ['as' => 'users.store', 'uses' => 'UsersController@store'])
 
 Route::get('login', array('as' => 'users.login', 'uses' => 'UsersController@login'));
 
-Route::post('swag', ['as' => 'users.do_login', 'uses' => 'UsersController@doLogin']);
+Route::post('login', ['as' => 'users.do_login', 'uses' => 'UsersController@doLogin']);
 
 Route::get('confirm/{code}', array('as' => 'users.confirm', 'uses' => 'UsersController@confirm'));
 

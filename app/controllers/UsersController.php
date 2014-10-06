@@ -201,8 +201,9 @@ class UsersController extends Controller
      */
     public function logout()
     {
+        Session::put('impersonated', false);
+        Session::put('original_user', '');
         Confide::logout();
-
         return Redirect::to('/');
     }
 }

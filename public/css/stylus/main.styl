@@ -4,6 +4,7 @@
 
 @import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic')
 @import 'includes/vars'
+@import 'includes/jeet/index'
 @import 'includes/mixins'
 @import 'includes/colors'
 @import 'includes/adminLTE_buttons'
@@ -98,6 +99,8 @@ a
           background-color $nav_hover_color
     .navbar-text
       padding 5px 0
+  &.navbar-impersonated
+    top 50px;
 
 //------------------------------------------------------------------
 
@@ -116,7 +119,7 @@ a
   margin-bottom -5px
 
 
-//-------------------------------------------------------------------
+//------------------------------------------------------------------
 
 .teste
   background-image url('http://p1.pichost.me/i/41/1640904.jpg')
@@ -126,16 +129,59 @@ a
   h3
     color #fff
     text-shadow 1px 1px 3px #999
+//edit(blue)
+
+.jeet-test
+  col(2/3)
 
 //------------------------------------------------------------------
 
+// Profile ---------------------------------------------------------
+
+.profile-header-img
+  background-image url('http://p1.pichost.me/i/41/1640904.jpg')
+  background-position 0 -300px, center
+  background-size 130%
+  height 250px
+  // ^remove later
+
+
+.profile-user-details
+  margin-left 50px
+  .user-photo
+    position relative
+    top -60px
+    padding 5px
+    width 160px
+    background-color $body_color
+  .user-name
+    display inline
+    relative top -30px left 10px
+
+//------------------------------------------------------------------
+
+// Impersonate -----------------------------------------------------
+
+.impersonating-alert
+  background $site_black
+  color $site_white
+  position fixed
+  top 0
+  left 0
+  padding 15px
+  width 100%
+  font-weight bold
+  text-align right
+  z-index 9999
+
+//------------------------------------------------------------------
 .main-container
   //background $body_color
   //border 1px solid $body_border_color
   //border-top 0
   //border-bottom 0
   //box-shadow 0px 0px 8px $drop_shadow_color
-  margin-top -20px
+  margin-top -30px
   padding 30px 15px
 
 .breadcrumb

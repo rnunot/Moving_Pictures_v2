@@ -34,9 +34,12 @@ module.exports = (grunt) ->
       compile:
         options:
           banner: "/*! <%= pkg.name %> <%= pkg.version %> version: <%= grunt.template.today(\"yyyy-mm-dd\") %> */\n"
-          compress: false #minifies css, turn on for production
-          linenos: false #Specifies if the generated CSS file should contain comments indicating the corresponding stylus line.
-          import: ['nib/*'] #Import all nib packages
+          compress: false # minifies css, turn on for production
+          linenos: false # Specifies if the generated CSS file should contain comments indicating the corresponding stylus line.
+          import: ['nib/*'] #I mport all nib packages
+          use: [
+            require('rupture') # https://github.com/jenius/rupture
+          ]
 
         files: [
           expand: true

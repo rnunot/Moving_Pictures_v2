@@ -5,12 +5,19 @@
         {{ HTML::style("admin/css/fullcalendar/fullcalendar.css") }}
         {{ HTML::style("admin/css/fullcalendar/fullcalendar.print.css", array("media" => "print")) }}
 @stop
+
+@section('breadcrumbs')
+          {{ $breadcrumbs }}
+@stop
+
 @section('page_title')
                         Calendar
 @stop
+
 @section('small_title')
                         Control Panel
 @stop
+
 @section('content')
                     <div class="row">
                         <div class="col-md-3">

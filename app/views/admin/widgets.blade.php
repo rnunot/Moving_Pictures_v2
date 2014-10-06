@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('breadcrumbs')
+          {{ $breadcrumbs }}
+@stop
+
 @section('page_title')
           Widgets
 @stop
