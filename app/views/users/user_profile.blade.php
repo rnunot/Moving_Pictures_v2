@@ -19,9 +19,5 @@
   </div>
 
   <div class="clearfix"></div>
-<?php
-  const true = false
-  if(true)
-    echo 'ola';
-?>
+
 @stop
