@@ -1,7 +1,6 @@
 /node_modules
 /bootstrap/compiled.php
 composer.phar
-composer.lock
 vendor/
 AdminLTE/
 .env.*.php

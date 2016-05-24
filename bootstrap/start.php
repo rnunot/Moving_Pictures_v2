@@ -26,8 +26,8 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('AltEisen'),
-  'cloud9' => array('rnunot-moving_pictures_v2-1011665')
+    'local' => array('AltEisen', 'RicardoTavares'),
+    'cloud9' => array('rnunot-moving_pictures_v2-1011665')
 
 ));
 
